@@ -6,13 +6,14 @@ import os
 from scripingc_weather import json_text
 
 app=Flask(__name__)
+
 #環境変数の取得
-YOUR_CHANNEL_ACCESS_TOKEN = "xPSKm4nXrC11iBRb7L1EZVhlpw18JptISsq9Nw6oudQe+vSVMOtPusVNwLclhkq4pLm05jiU0FhzSJj6eFO8d6dprqu9vq4QlV5qWIGTQfAT7D4C2Mu6JB3w3JeLlP85KksDuYf0NT31SKD/undiAgdB04t89/1O/w1cDnyilFU="
-YOUR_CHANNEL_SECRET = "441426600167176163ca73a65781aac3"
+YOUR_CHANNEL_ACCESS_TOKEN = "YOUR_CHANNEL_ACCESS_TOKEN"
+YOUR_CHANNEL_SECRET = "YOUR_CHANNEL_SECRET"
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-@app.route("/callback",methods=["POST"])
+@app.route("/callback", methods=["POST"])
 def callback():
     signature=request.headers["X-Line-Signature"]
 
