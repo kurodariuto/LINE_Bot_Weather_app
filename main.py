@@ -7,7 +7,7 @@ from scripingc_weather import json_text
 
 app=Flask(__name__)
 
-#環境変数の取得
+# Get environment variables
 YOUR_CHANNEL_ACCESS_TOKEN = "YOUR_CHANNEL_ACCESS_TOKEN"
 YOUR_CHANNEL_SECRET = "YOUR_CHANNEL_SECRET"
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
@@ -28,16 +28,17 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #入力された文字列を格納
+
+    # Storage of the entered character string
     push_text = event.message.text
 
-    #リプライする文字列
+    # String to reply
     if push_text == "天気":
         reply_text = json_text
     else:
         reply_text = push_text
 
-    #リプライ部分の記述
+    # Description of reply part
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
 
 if __name__=="__main__":
